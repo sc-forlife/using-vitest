@@ -1,13 +1,13 @@
 import css from "./UserProfile.module.css";
 import { useState, useEffect } from "react";
 
-export default function UserProfile({ id = "" }) {
+export default function UserProfile({ id = 1 }) {
   const [user, setUser] = useState({});
 
-  async function getUser(id) {
+  async function getUser(userId) {
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${id}`,
+        `https://jsonplaceholder.typicode.com/users/${userId}`,
       );
       const responseData = await response.json();
       setUser(responseData);
@@ -17,9 +17,10 @@ export default function UserProfile({ id = "" }) {
   }
 
   useEffect(() => {
-    getUser(4);
+    getUser(id);
   }, []);
 
+  if (!user) return <p>Loading ...</p>;
   return (
     <>
       <div className={css.center}>

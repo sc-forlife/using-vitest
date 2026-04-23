@@ -8,7 +8,7 @@ export default function App() {
       <div className="align">
         <Greeting name="Salem" />
         <Counter />
-        <UserProfile id={3} />
+        <UserProfile id={6} />
       </div>
     </>
   );

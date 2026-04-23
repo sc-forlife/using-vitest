@@ -14,7 +14,7 @@ export default function Counter() {
   return (
     <>
       <div className={css.buttons}>
-        <h1>{number}</h1>
+        <h1 data-testid="counter-value">{number}</h1>
         <button onClick={increment}>Increment</button>
         <button onClick={reset}>Reset</button>
       </div>
