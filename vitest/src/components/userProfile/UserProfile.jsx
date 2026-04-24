@@ -2,7 +2,7 @@ import css from "./UserProfile.module.css";
 import { useState, useEffect } from "react";
 
 export default function UserProfile({ id = 1 }) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   async function getUser(userId) {
     try {
@@ -20,12 +20,17 @@ export default function UserProfile({ id = 1 }) {
     getUser(id);
   }, []);
 
-  if (!user) return <p>Loading ...</p>;
   return (
     <>
       <div className={css.center}>
-        <h2>{user.name}</h2>
-        <h3>{user.email}</h3>
+        {!user ? (
+          <p>loading ...</p>
+        ) : (
+          <>
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+          </>
+        )}
       </div>
     </>
   );
