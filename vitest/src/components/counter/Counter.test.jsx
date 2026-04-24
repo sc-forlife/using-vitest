@@ -30,14 +30,14 @@ describe("Counter", () => {
     expect(counterValue.textContent).toEqual("2");
   });
 
-  it("Resets Counter to 0", async () => {
+  it("decrements Counter to -1", async () => {
     render(<Counter />);
-    const buttonReset = screen.getByRole("button", { name: /Reset/i });
+    const buttonDecrement = screen.getByRole("button", { name: /Decrement/i });
 
     const counterValue = screen.getByTestId("counter-value");
 
-    await userEvent.click(buttonReset);
+    await userEvent.click(buttonDecrement);
 
-    expect(counterValue.textContent).toEqual("0");
+    expect(counterValue.textContent).toEqual("-1");
   });
 });
